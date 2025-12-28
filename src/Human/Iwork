@@ -1,0 +1,6 @@
+package Human;
+
+public interface Iwork {
+    void takeBreak();
+    void sayYourMood();
+}
