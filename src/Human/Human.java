@@ -1,14 +1,16 @@
 package Human;
 
-public class Human {
-    private String name;
-    private int age;
-    private boolean isAdult;
+public abstract class Human {
+    protected String name;
+    protected int age;
+    protected boolean isAdult;
     public Human(String name, int age){
         this.name = name;
         this.age = age;
         this.isAdult = age >= 18;
     }
+    public abstract void tellSomething();
+
     public void getInfo(){
         System.out.println("Name: " + name + ", Age: " + age + ", Adult: " + isAdult);
     }
