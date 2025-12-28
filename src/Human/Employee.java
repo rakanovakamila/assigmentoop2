@@ -1,26 +1,29 @@
 package Human;
 
-public class Employee extends Human{
-    private String jobName;
-    private  float monthlyIncome;
-    private static int totalEmployees = 0;
-    public  Employee(String name, int age, String position, float monthlyIncome){
-        super(name, age);
-        this.jobName = position;
-        this.monthlyIncome = monthlyIncome;
-        totalEmployees++;
+public abstract class Human {
+    protected String name;
+    protected int age;
+    protected boolean isAdult;
+    public Human(String name, int age){
+        this.name = name;
+        this.age = age;
+        this.isAdult = age >= 18;
     }
-    @Override
-    public String sayYourPosition() {
-        return "I am an employee";
+    public abstract void tellSomething();
+
+    public void getInfo(){
+        System.out.println("Name: " + name + ", Age: " + age + ", Adult: " + isAdult);
     }
-    public void work() {
-        System.out.println(getName() + " is working as " + jobName);
+    public String sayYourPosition(){
+        return "I am a human";
+    }
+    public String getName(){return this.name;}
+    public void setName(String name){this.name = name;}
+    public int getAge(){return this.age;}
+    public void setAge(int age) {
+        this.age = age;
+        this.isAdult = age >= 18; // обновляем при изменении возраста
     }
 
-    public String getJobName(){return jobName;}
-    public void setPosition(String position){this.jobName = jobName;}
-    public float getMonthlyIncome(){return monthlyIncome;}
-    public void setMonthlyIncome(float monthlyIncome){this.monthlyIncome = monthlyIncome;}
-    public static int getTotalEmployees(){return totalEmployees;}
+    public boolean isAdult() { return isAdult; }
 }
