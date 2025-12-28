@@ -1,29 +1,38 @@
 package Human;
 
-public abstract class Human {
-    protected String name;
-    protected int age;
-    protected boolean isAdult;
-    public Human(String name, int age){
-        this.name = name;
-        this.age = age;
-        this.isAdult = age >= 18;
+public class Employee extends Human implements Iwork, Istudy{
+    private String jobName;
+    private float monthlyIncome;
+    private static int totalEmployees = 0;
+    public  Employee(String name, int age, String jobName, float monthlyIncome){
+        super(name, age);
+        this.jobName = jobName;
+        this.monthlyIncome = monthlyIncome;
+        totalEmployees++;
     }
-    public abstract void tellSomething();
+    @Override
+    public void tellSomething() {
+        System.out.println(name + " :What do you think abt my salary? " + monthlyIncome);
+    }
+    @Override
+    public void takeBreak(){ System.out.println(name + " is taking a break,because tired from being " + jobName);}
+    @Override
+    public void sayYourMood() { System.out.println("I'm happy(no) to work as " + jobName);}
+    @Override
+    public void haveAssignments() {System.out.println(name + " has work projects");}
+    @Override
+    public void favoriteCourse(String courseName) {System.out.println(name + "'s favorite course for job: " + courseName);}
+    @Override
+    public String sayYourPosition() {
+        return "I am an employee";
+    }
+    public void work() {
+        System.out.println(name + " is working as " + jobName);
+    }
 
-    public void getInfo(){
-        System.out.println("Name: " + name + ", Age: " + age + ", Adult: " + isAdult);
-    }
-    public String sayYourPosition(){
-        return "I am a human";
-    }
-    public String getName(){return this.name;}
-    public void setName(String name){this.name = name;}
-    public int getAge(){return this.age;}
-    public void setAge(int age) {
-        this.age = age;
-        this.isAdult = age >= 18; // обновляем при изменении возраста
-    }
-
-    public boolean isAdult() { return isAdult; }
+    public String getJobName(){return jobName;}
+    public void setPosition(String position){this.jobName = jobName;}
+    public float getMonthlyIncome(){return monthlyIncome;}
+    public void setMonthlyIncome(float monthlyIncome){this.monthlyIncome = monthlyIncome;}
+    public static int getTotalEmployees(){return totalEmployees;}
 }
