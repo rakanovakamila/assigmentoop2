@@ -1,0 +1,7 @@
+package Human;
+
+public interface Istudy {
+    void haveAssignments();
+    void favoriteCourse(String courseName);
+
+}
